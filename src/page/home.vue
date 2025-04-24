@@ -192,14 +192,13 @@ li {
   background-color: rgb(26, 139, 130);
   color: #fff;
 }
-.home:deep(.el-menu-item:focus) {
+/* .home:deep(.el-menu-item:focus) {
   background-color: #fff;
   color: #21aea2;
   height: 50px;
-  /* padding: 0 40px; */
   border-bottom: none;
   border-radius: 10px;
-}
+} */
 .home:deep(.el-menu--horizontal > .el-menu-item) {
   font-size: 18px;
   /* margin-left: 10px; */
