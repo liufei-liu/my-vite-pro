@@ -130,19 +130,18 @@ let menuList = [
 const activeIndex = ref(localStorage.getItem("activeMenu") || "index");
 
 // //监听变化存储到 localStorage
-watch(activeIndex, (newVal) => {
-  localStorage.setItem("activeMenu", newVal);
-});
+// watch(activeIndex, (newVal) => {
+//   localStorage.setItem("activeMenu", newVal);
+// });
 
-onMounted(() => {
-  // 页面刷新时同步状态
-  if (localStorage.getItem("activeMenu")) {
-    activeIndex.value = localStorage.getItem("activeMenu")!;
-    console.log(activeIndex);
-  }
-});
+// onMounted(() => {
+//   // 页面刷新时同步状态
+//   if (localStorage.getItem("activeMenu")) {
+//     activeIndex.value = localStorage.getItem("activeMenu")!;
+//     console.log(activeIndex);
+//   }
+// });
 const router = useRouter();
-// const activeIndex2 = ref("1");
 const handleSelect = (key: string) => {
   localStorage.setItem("activeMenu", key);
   activeIndex.value = localStorage.getItem("activeMenu")!;
