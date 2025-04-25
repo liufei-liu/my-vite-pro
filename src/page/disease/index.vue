@@ -1,4 +1,4 @@
-<template>健康管理</template>
+<template>健康管理1</template>
 
 <script>
 export default {};
