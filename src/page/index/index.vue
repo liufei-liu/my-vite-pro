@@ -43,9 +43,15 @@
   </div>
 </template>
 
-<script setup >
+<script setup lang='ts' >
 import secTitleNor from "@/shared/components/secTitleAct.vue";
 import secTitleAct from "@/shared/components/secTitleAct.vue";
+import config from '/public/indexConfig.json'
+let list=config.list
+console.log(list)
+// const getList = (prams:any) => {
+//   list=window.indexConfig.list;
+// };
 </script>
 
 <style lang="scss" scoped>
