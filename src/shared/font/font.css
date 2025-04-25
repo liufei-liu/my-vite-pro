@@ -1,0 +1,18 @@
+@font-face{
+    font-family: '碳化硅大黑体';
+    src: url('./碳化硅大黑体.woff') format('woff'); 
+   /* src: url('./时尚中黑简体.eot'); 
+    src: url('./时尚中黑简体.eot?#iefix') format('embedded-opentype'),
+        url('./碳化硅大黑体.woff') format('woff'), 
+        url('./时尚中黑简体.ttf')  format('truetype'), 
+        url('./时尚中黑简体.svg#pingfang') format('svg');*/
+}
+@font-face{
+    font-family: '思源黑体-Regular';
+    src: url('./思源黑体-Regular.woff') format('woff'); 
+   /* src: url('./时尚中黑简体.eot'); 
+    src: url('./时尚中黑简体.eot?#iefix') format('embedded-opentype'),
+        url('./碳化硅大黑体.woff') format('woff'), 
+        url('./时尚中黑简体.ttf')  format('truetype'), 
+        url('./时尚中黑简体.svg#pingfang') format('svg');*/
+}

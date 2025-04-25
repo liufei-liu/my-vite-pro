@@ -1,76 +1,158 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+html,
+body {
+	font-family: "Microsoft YaHei", "Helvetica Neue", Arial, HelveticaNeue, Helvetica, "BBAlpha Sans", sans-serif;
+	font-weight: 400;
+	-ms-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+	height: 100%;
+	width: 100%;
+	-webkit-overflow-scrolling: touch;
+	-webkit-touch-callout: none;
 }
+
+/* 去除元素自带padding和margin */
+
+html,
+body,
+div,
+ul,
+li,
+ol,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+input,
+textarea,
+select,
+p,
+dl,
+dt,
+dd,
+a,
+img,
+button,
+form,
+table,
+th,
+tr,
+td,
+tbody,
+footer,
+header,
+nav {
+	margin: 0;
+	padding: 0;
+}
+
+/* 去除列表自带圆点 */
+
+li {
+	list-style: none
+}
+
+/* 去除a链接下划线 */
 
 a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+	text-decoration: none;
+	outline: 0;
+	color: #000;
 }
 
-body {
-  margin: 0;
-  /* display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh; */
+
+
+/* 去除图片自带的边框 */
+
+img {
+	border: 0
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
+/* 设置表单元素的文字字体 */
 
+input,
+select,
+textarea,
 button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+	font-family: inherit;
 }
 
-.card {
-  padding: 2em;
+/* 设置HTML5元素为块 */
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+	display: block;
 }
 
+/*去除点击高亮效果*/
+
+a,
+button,
+input,
+select,
+img,
+label {
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	-webkit-tap-highlight-color: transparent;
+}
+
+input {
+	outline: none;
+	border: none;
+}
 #app {
-
+  height: 100%;
+}
+.fy-panel {
+    display: flex;
+    justify-content: center;
+    margin: 20px auto;
+}
+.fy-panel .el-pager li,
+.fy-panel .el-pagination button  {
+    width: 60px !important;
+    height: 48px !important;
+} 
+.fy-panel .el-pagination button {
+    background: #BCEBE6 !important;
+}
+.el-pagination.is-background .btn-next.is-active, 
+.el-pagination.is-background .btn-prev.is-active, 
+.el-pagination.is-background .el-pager li.is-active {
+	background: #BCEBE6 !important;
+}
+.el-pagination.is-background .btn-next.is-active, 
+.el-pagination.is-background .btn-prev.is-active, 
+.el-pagination.is-background .el-pager li.is-active {
+	color: #21AEA2 !important;
+}
+.el-button--primary {
+	background: #21AEA2 !important;
+	border: 1px solid #21AEA2 !important;
+}
+/* 修改滚动条轨道的样式 */
+::-webkit-scrollbar-track {
+  background-color: #f1f1f1; /* 设置轨道背景色 */
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+/* 修改滚动条滑块的样式 */
+::-webkit-scrollbar-thumb {
+  background-color: #ccc; /* 设置滑块颜色 */
+  border-radius: 10px; /* 设置滑块圆角 */
+}
+
+/* 修改滚动条尺寸 */
+::-webkit-scrollbar {
+  width: 8px; /* 设置滚动条宽度 */
+  height: 8px; /* 设置滚动条高度 */
 }

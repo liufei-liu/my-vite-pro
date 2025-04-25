@@ -4,6 +4,9 @@ import App from './App.vue'
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
 import routers from './router/index.js'
+
+// 全局字体引入
+import '@/shared/font/font.css'
 const app = createApp(App)
  
 // 2：全局注册组件

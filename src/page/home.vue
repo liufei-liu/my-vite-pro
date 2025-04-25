@@ -23,7 +23,7 @@
         >{{ item.label }}</el-menu-item
       >
     </el-menu>
-    <div>
+    <div class="box-bottom">
       <router-view></router-view>
     </div>
   </div>
@@ -162,6 +162,14 @@ ul {
 li {
   display: inline-block;
   margin: 0 10px;
+}
+.box-bottom {
+  width: 100%;
+  min-height: calc(100% - 80px);
+  padding: 0 70px 20px 70px;
+  box-sizing: border-box;
+  /* background-color: #f3fffd; */
+  background-image: linear-gradient(#ffffff, #e2fffc);
 }
 .home {
   position: relative;
