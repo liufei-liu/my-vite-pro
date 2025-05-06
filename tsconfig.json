@@ -35,7 +35,8 @@
       "@/*": ["./src/*"],
       "public/*": ["./public/*"] ,   // 路径映射
 
-    "@shared/*": ["./src/shared/*"]
+    "@shared/*": ["./src/shared/*"],
+    "@assets/*": ["./src/assets/*"]
     },                                 /* Specify a set of entries that re-map imports to additional lookup locations. */
     // "rootDirs": [],                                   /* Allow multiple folders to be treated as one when resolving modules. */
     // "typeRoots": [],                                  /* Specify multiple folders that act like './node_modules/@types'. */
@@ -117,5 +118,7 @@
     "skipLibCheck": true,
                         /* Skip type checking all .d.ts files. */
   },
-  "include": ["src/**/*.vue", "src/**/*.ts","public/**/*.json" ]  // 必须包含    
+  "include": ["src/**/*.vue", "src/**/*.ts","public/**/*.json", "src/**/*.ts",
+  "src/**/*.d.ts",
+  "src/vite-env.d.ts"  ]  // 必须包含    
 }

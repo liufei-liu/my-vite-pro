@@ -4,35 +4,36 @@
       <div class="title">
         <secTitleAct class="tab-one" title="选择套餐" />
       </div>
-      <div class="left-content">
-        <div>
-          <div class="item-title">基本套餐</div>
-          <div class="comboItem">
-            <span class="discount">会员1.0扣</span>
-            <div class="bg-img bg-div">
+      <div class="left-content" >
+        <div v-for="(item,idx) in list" :key="idx">
+          <div class="item-title">{{item.name}}</div>
+          <div class="comboItem" v-for="(sub,index) in item.list" :key="idx"   @click="selectOption(sub, index, idx)" :class="activityId==sub.id?'':'comboItem-bor'">
+            <span class="discount">会员{{ ((sub.member_price / sub.normal_price) * 10).toFixed(1)}}折</span>
+            <div class="bg-img bg-div" v-if="activityId==sub.id">
               <div>
                 <header>适用人群</header>
-                <p>sdadawdawd</p>
+                <p>{{sub.marks}}</p>
               </div>
             </div>
-            <!-- <img class="bg-img" src="" /> -->
+            <img v-else class="bg-img" :src="picGlo" /> 
             <div class="text-box">
               <div class="name">超声波燃脂</div>
               <!-- 活动价格 -->
-              <span class="money">￥299</span>
-              <!-- 会员价格 -->
-              <!-- <span class="money">￥399</span> -->
+              <span class="money" v-if="sub.activity">￥{{sub.sale_price}}</span>
+             <!-- 会员价 -->
+              <span class="money">￥{{sub.member_price }}</span>
               <!-- 原价 -->
-              <span class="Nop-money">￥79</span>
-              <span class="op-money">￥33</span>
-              <span class="time">20min</span>
+              <span class="Nop-money"  v-if="sub.activity">￥{{ sub.normal_price }}</span>
+              <span class="op-money" v-else>￥{{ sub.normal_price }}</span>
+              <span class="time">{{ sub.time }}min</span>
               <el-popover
                 title="适应征状"
-                content="弹窗内容"
+                 :width="200"
+              :content="sub.description"
                 placement="top-start"
               >
                 <template #reference>
-                  <div class="description">top-start</div>
+                  <div class="description">{{ sub.description }}</div>
                 </template>
               </el-popover>
             </div>
@@ -44,14 +45,48 @@
 </template>
 
 <script setup lang='ts' >
+import { ref } from "vue";
 import secTitleNor from "@/shared/components/secTitleAct.vue";
 import secTitleAct from "@/shared/components/secTitleAct.vue";
 import config from '/public/indexConfig.json'
+import picGlo from "@/assets/img/1.png";
+let activityId=ref(-1);
+let padkageData = ref({}); //套餐数据
 let list=config.list
-console.log(list)
-// const getList = (prams:any) => {
-//   list=window.indexConfig.list;
-// };
+const getList=(params:any)=>{
+  let list=config.list
+  console.log(list)
+}
+
+const selectOption=(val:any, idx:number, index:number)=>{
+
+let {
+    equipment,
+    name,
+    time,
+    id,
+    activity,
+    sale_price,
+    member_price,
+    normal_price,
+  } = val; 
+
+  activityId.value=val.id
+  padkageData.value={
+    equipment: equipment,
+    plan: name,
+    time: time,
+    id: id,
+    sale_price: sale_price,
+    member_price: member_price,
+    normal_price: normal_price,
+    activity: activity,
+    plan_time: time,
+  }
+}
+
+
+
 </script>
 
 <style lang="scss" scoped>
@@ -188,6 +223,17 @@ console.log(list)
   vertical-align: bottom;
   margin-left: 22px;
 }
+.bg-div p {
+  font-size: 13px;
+  color: #000000;
+  line-height: 20px;
+  height: 120px;
+  /* 超出显示省略号 */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 6;
+  overflow: hidden;
+}
 .description {
   height: 30px;
   margin-left: 10px;
@@ -202,4 +248,9 @@ console.log(list)
   -webkit-line-clamp: 2;
   text-overflow: ellipsis;
 }
-</style>>
+.comboItem-bor {
+  border-radius: 8px;
+  border: 1px solid #21aea2;
+  overflow: hidden;
+}
+</style>
