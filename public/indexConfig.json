@@ -231,5 +231,12 @@
     "ismember": "true",
     "is_score": "true"
   }
-]
+],
+"member":{
+  "gender":"女",
+  "name":"小明",
+  "age":18,
+  "phone_number":"13287641111"
 }
+}
+

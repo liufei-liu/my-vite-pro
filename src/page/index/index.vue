@@ -1,5 +1,6 @@
 <template>
   <div class="index">
+  <!-- 左侧布局 -->
     <div class="left">
       <div class="title">
         <secTitleAct class="tab-one" title="选择套餐" />
@@ -41,22 +42,83 @@
         </div>
       </div>
     </div>
+    <!-- 右侧布局 -->
+     <div class="right">
+      <div class="right-title">
+        <secTitleNor v-if="activeNum==2" class="tab-one"  @click="changeTitle(1)" title="游客下单"></secTitleNor>
+        <secTitleAct v-else class="tab-one"  @click="changeTitle(1)" title="游客下单"></secTitleAct>
+        <secTitleNor v-if="activeNum==1" class="tab-two"  @click="changeTitle(2)" title="会员下单"></secTitleNor>
+        <secTitleAct v-else class="tab-two"  @click="changeTitle(2)" title="会员下单"></secTitleAct>
+      </div>
+      <div class="right-content">
+        <div class="member-box">
+          <div class="member-login">
+            <el-form :inline="true" class="demo-form-inline">
+              <el-form-item>
+                <el-input
+                  clearable
+                  v-model="phone"
+                  placeholder="请输入手机号"
+                  @keyup.enter.native="selectInfo()"
+                />
+              </el-form-item>
+              <!-- @keyup.enter.native -->
+              <span class="selectBtn" @click="selectInfo()">查询</span>
+            </el-form>
+            <div>
+              <div class="basic" v-if="memberInfo.gender&&memberInfo.name&&memberInfo.age>0&&memberInfo.phone_number">
+                <img
+                  v-if="memberInfo.gender == '女'"
+                  src="../../assets/img/home/index_pic_famale.png"
+                  
+                />
+                <img
+                  v-if="memberInfo.gender == '男'"
+                  src="../../assets/img/home/index_pic_man.png"
+                  
+                />
+                <div class="basic-right">
+                  <div class="basic-name">{{ memberInfo.name }}</div>
+                  <span>{{ memberInfo.age }}岁</span>
+                  <span class="basic-phone">{{ memberInfo.phone_number }}</span>
+                </div>
+              </div>
+            </div>
+          
+          </div>
+        </div>
+
+      </div>
+     </div>
   </div>
 </template>
 
 <script setup lang='ts' >
 import { ref } from "vue";
-import secTitleNor from "@/shared/components/secTitleAct.vue";
+import secTitleNor from "@/shared/components/secTitleNot.vue";
 import secTitleAct from "@/shared/components/secTitleAct.vue";
 import config from '/public/indexConfig.json'
 import picGlo from "@/assets/img/1.png";
 let activityId=ref(-1);
+let activeNum=ref(1);
+let phone=ref();
+
 let padkageData = ref({}); //套餐数据
 let list=config.list
-const getList=(params:any)=>{
-  let list=config.list
-  console.log(list)
+interface Member {
+  gender: string
+  age: number
+  name: string
+  phone_number:any
+
 }
+let memberInfo=ref<Member>({
+  gender: '',
+  age: 0,
+  name: '',
+  phone_number:''
+});
+
 
 const selectOption=(val:any, idx:number, index:number)=>{
 
@@ -85,7 +147,14 @@ let {
   }
 }
 
-
+const changeTitle=(num:number)=>{
+  activeNum.value=num
+  activityId.value=-1
+}
+const selectInfo=()=>{
+memberInfo.value=config.member;
+console.log(memberInfo.value)
+}
 
 </script>
 
@@ -252,5 +321,96 @@ let {
   border-radius: 8px;
   border: 1px solid #21aea2;
   overflow: hidden;
+}
+.right-title {
+  /* height: 30px; */
+  margin-top: 20px;
+  margin-bottom: 56px;
+}
+
+.right-title div {
+  float: left;
+  height: 100%;
+  margin-right: 30px;
+  display: flex;
+  align-items: center;
+}
+.tab-one {
+  margin-right: 20px;
+}
+/* 右侧内容大盒子 */
+.right-content {
+  position: relative;
+  border: 1px solid #bcebe6;
+  /* height: 800px; */
+  min-height: 800px;
+  width: 690px;
+  padding: 0 0 20px 40px;
+  border-radius: 2%;
+  background-color: #fff;
+}
+.member-login {
+  margin-top: 40px;
+}
+
+/* 输入框宽度 :deep() */
+.index :deep(.el-input__inner) {
+  height: 40px;
+  width: 450px;
+}
+
+/* 输入框样式 */
+.index :deep(.el-input__wrapper) {
+  border: 1px solid #21aea2;
+  box-shadow: none;
+  width: 480px;
+}
+
+.index :deep(.el-form--inline .el-form-item) {
+  margin: 0;
+}
+
+/* 右侧查询按钮样式 */
+.selectBtn {
+  display: inline-block;
+  width: 90px;
+  height: 40px;
+  background: #21aea2;
+  color: #fff;
+  vertical-align: middle;
+  text-align: center;
+  line-height: 40px;
+  margin-left: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.basic {
+  margin-top: 20px;
+  height: 70px;
+}
+
+.basic img {
+  width: 60px;
+  height: 60px;
+}
+
+.basic img,
+.basic-right {
+  float: left;
+}
+
+.basic-right {
+  margin-left: 20px;
+}
+
+.basic-name {
+  font-size: 20px;
+  margin-bottom: 8px;
+  color: #089488;
+  font-weight: 700;
+}
+
+.basic-phone {
+  margin-left: 20px;
 }
 </style>
