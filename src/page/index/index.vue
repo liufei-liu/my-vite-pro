@@ -153,6 +153,9 @@
 
       </div>
      </div>
+     <time-list>
+      
+     </time-list>
   </div>
 </template>
 
@@ -162,6 +165,7 @@ import secTitleNor from "@/shared/components/secTitleNot.vue";
 import secTitleAct from "@/shared/components/secTitleAct.vue";
 import config from '/public/indexConfig.json'
 import picGlo from "@/assets/img/1.png";
+import timeList from "./timeList.vue";
 const currentInstance = getCurrentInstance()! as ComponentInternalInstance;
 const { proxy } = currentInstance;
 let list=config.list
